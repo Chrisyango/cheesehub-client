@@ -8,23 +8,17 @@ class CheeseList extends React.Component {
   }
   
   render() {
-    const cheeses = this.props.cheeses;
+    const cheeses = this.props.cheeses.map((cheese, index) => {
+      return (
+      <li key={index}>
+        {cheese}
+      </li>)
+    })
     return (
-      <div>
+      <ul id="cheeseList">
         {cheeses}
-      </div>
-    )
-    // const cheeses = this.props.cheeses.map((cheese, index) => {
-    //   return (
-    //   <li key={index}>
-    //     {cheese}
-    //   </li>)
-    // })
-    // return (
-    //   <ul id="cheeseList">
-    //     {cheeses}
-    //   </ul>
-    // );
+      </ul>
+    );
   }
 }
   

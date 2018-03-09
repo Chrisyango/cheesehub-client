@@ -1,5 +1,4 @@
 import {API_BASE_URL} from '../config';
-console.log(API_BASE_URL);
 
 export const FETCH_CHEESES_REQUEST = 'FETCH_CHEESES_REQUEST'; 
 export const fetchCheesesRequest = () => ({
@@ -24,10 +23,11 @@ export const fetchCheeses = cheeses => dispatch => {
     .then(res => {
       return res.json();
     })
-    // .then(cheeses => {
-    //   console.log('cheeses');
-    //   cheeses.results.map(cheese => cheese.name)
-    // })
-    .then(cheeses => {console.log(cheeses)})
+    .then(cheeses => {
+      return cheeses.map(cheese => cheese.name)
+    })
+    .then(cheeses => {
+      dispatch(fetchCheesesSuccess(cheeses));
+    })
     .catch(err => {dispatch(fetchCheesesError(err))});
 }
